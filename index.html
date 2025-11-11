@@ -3,15 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🚴‍♀️ Bikewatching</title>
-    <link rel="stylesheet" href="global.css" />
+    <title>Bikewatching</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="global.css" />
+
+    <!-- Mapbox GL JS CSS -->
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <!-- Map styling -->
+    <link rel="stylesheet" href="map.css" />
+
+    <!-- Map script -->
+    <script src="map.js" type="module"></script>
   </head>
+
   <body>
     <h1>🚴‍♀️ Bikewatching</h1>
     <p>
-      An interactive visualization exploring Boston's bike traffic patterns.
+      An interactive visualization exploring Boston’s bike traffic patterns.
       Pan and zoom the map to explore where riders travel across the city.
     </p>
+
+    <!-- Map container -->
+    <div id="map"></div>
   </body>
 </html>
