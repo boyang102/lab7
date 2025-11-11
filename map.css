@@ -16,3 +16,36 @@
     z-index: 10;
     pointer-events: none; /* 确保可以继续拖动地图 */
   }
+
+  /* ---------------- Circle color mixing ---------------- */
+#map circle,
+.legend > div {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  fill: var(--color);
+}
+
+/* ---------------- Legend styling ---------------- */
+.legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 1px;
+  margin: 1em auto;
+  width: 90%;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.legend > div {
+  flex: 1;
+  padding: 0.5em 1em;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}

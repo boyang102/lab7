@@ -76,6 +76,9 @@ function computeStationTraffic(stations, timeFilter = -1) {
   });
 }
 
+// ✅ NEW: Color quantization scale (0=arrivals, 1=departures)
+const stationFlow = d3.scaleQuantize().domain([0, 1]).range([0, 0.5, 1]);
+
 // ----------------- Main map logic -----------------
 map.on("load", async () => {
   console.log("✅ Map loaded");
@@ -150,7 +153,10 @@ map.on("load", async () => {
     .data(stations, (d) => d.short_name)
     .enter()
     .append("circle")
-    .attr("fill", "steelblue")
+    // ✅ Color now depends on departure ratio
+    .style("--departure-ratio", (d) =>
+      stationFlow(d.departures / d.totalTraffic || 0)
+    )
     .attr("stroke", "white")
     .attr("fill-opacity", 0.6)
     .attr("stroke-width", 1)
@@ -188,7 +194,11 @@ map.on("load", async () => {
     circles
       .data(filteredStations, (d) => d.short_name)
       .join("circle")
-      .attr("r", (d) => radiusScale(d.totalTraffic));
+      .attr("r", (d) => radiusScale(d.totalTraffic))
+      // ✅ Update color when time changes
+      .style("--departure-ratio", (d) =>
+        stationFlow(d.departures / d.totalTraffic || 0)
+      );
   }
 
   function updateTimeDisplay() {
