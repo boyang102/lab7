@@ -21,13 +21,30 @@
   </head>
 
   <body>
-    <h1>🚴‍♀️ Bikewatching</h1>
+    <header>
+      <h1>🚴‍♀️ Bikewatching</h1>
+
+      <label>
+        Filter by time:
+        <input
+          id="time-slider"
+          type="range"
+          min="-1"
+          max="1440"
+          value="-1"
+          step="1"
+        />
+        <time id="selected-time"></time>
+        <em id="any-time">(any time)</em>
+      </label>
+    </header>
+
     <p>
       An interactive visualization exploring Boston’s bike traffic patterns.
       Pan and zoom the map to explore where riders travel across the city.
     </p>
 
-    <!-- ✅ Map container (⚠️ remove inner <svg>) -->
+    <!-- ✅ Map container (⚠️ no inner <svg> needed) -->
     <div id="map"></div>
   </body>
 </html>

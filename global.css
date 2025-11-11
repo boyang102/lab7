@@ -21,3 +21,25 @@ body {
     max-width: 40em;
     line-height: 1.5;
   }
+
+  header {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+    width: 90%;
+    justify-content: space-between;
+  }
+  
+  label {
+    margin-left: auto;
+  }
+  
+  time,
+  em {
+    display: block;
+  }
+  
+  em {
+    color: gray;
+    font-style: italic;
+  }
